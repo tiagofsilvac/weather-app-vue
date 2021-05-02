@@ -5,7 +5,7 @@
         <span class="location">
           {{ location }}
         </span>
-        <span class="date">{{ new Date(weather.date) | formatDate }}</span>
+        <span class="date">{{ formatDate(weather.date) }}</span>
       </div>
       <div class="weather-wrapper">
         <div class="state">
@@ -56,27 +56,26 @@ export default {
   props: {
     location: {
       type: String,
+      required: true,
     },
     weather: {
       type: Object,
       default: () => {},
+      required: true,
     },
   },
 
-  filters: {
+  methods: {
+    /*
+     * Formats the date in a "Sunday, May 2, 2021" format.
+     */
     formatDate(date) {
-      return date.toLocaleString("en-US", {
+      return new Date(date).toLocaleString("en-US", {
         weekday: "long",
         year: "numeric",
         month: "long",
         day: "numeric",
       });
-    },
-    roundNumber(value) {
-      return Math.round(value);
-    },
-    speedConverter(speed) {
-      return (speed * 1.61).toFixed(1);
     },
   },
 };
@@ -87,12 +86,11 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--default-margin);
 }
 .card-container {
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+  background-color: var(--card-background-color);
+  box-shadow: var(--box-shadow);
   width: 100%;
   max-width: 1000px;
   display: flex;
@@ -100,6 +98,7 @@ export default {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  padding: 25px;
 }
 
 .location-wrapper {
@@ -159,7 +158,6 @@ export default {
 
 .weather-wrapper img {
   width: 125px;
-  color: #fff;
   margin-bottom: 10px;
 }
 
@@ -180,15 +178,12 @@ export default {
 */
 
 /*
-* Large size screens
-*/
-@media screen and (max-width: 1024px) {
-}
-
-/*
 * Tablet sizes
  */
 @media screen and (max-width: 768px) {
+  .conditions span {
+    margin: 10px;
+  }
 }
 
 /* 
@@ -197,6 +192,9 @@ export default {
 @media screen and (max-width: 414px) {
   .card-container {
     border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    padding-top: 0;
   }
   .conditions span {
     margin: 10px;

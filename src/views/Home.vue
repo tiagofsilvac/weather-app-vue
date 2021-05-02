@@ -37,6 +37,9 @@ export default {
     ForecastCard,
   },
   methods: {
+    /*
+     * Fetches initial data for a defined location at app start.
+     */
     fetchInitialData() {
       this.$store.dispatch("weather/searchLocationWeather", this.defaultWoeid);
     },
@@ -69,7 +72,7 @@ export default {
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   grid-gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: var(--default-margin);
 }
 
 .loading {
@@ -95,12 +98,6 @@ export default {
     margin: 0 auto;
   }
 
-  .location-search {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
   .forecast-cards-container {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -119,7 +116,8 @@ export default {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-/* 
+
+/*
 * Mobile phone sizes
 */
 @media screen and (max-width: 414px) {

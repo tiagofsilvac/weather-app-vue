@@ -1,9 +1,8 @@
 <template>
   <div id="forecast-card">
-    <div v-if="!forecast">Loading...</div>
-    <div v-else class="card-container">
+    <div class="card-container">
       <div class="date-wrapper">
-        <span>{{ new Date(forecast.date) | formatDate }}</span>
+        <span>{{ formatDate(forecast.date) }}</span>
       </div>
       <div class="weather-forecast-wrapper">
         <div class="state">
@@ -37,6 +36,7 @@
 
 <script>
 import { weatherImageHelper } from "../mixins/weather-image-helper";
+
 export default {
   name: "ForecastCard",
   mixins: [weatherImageHelper],
@@ -44,20 +44,18 @@ export default {
     forecast: {
       type: Object,
       default: () => {},
+      required: true,
     },
   },
-  filters: {
+  methods: {
+    /*
+     * Formats the date in a "2 Tue", "3 Wed" format.
+     */
     formatDate(date) {
-      return date.toLocaleString("en-US", {
-        weekday: "long",
+      return new Date(date).toLocaleString("en-US", {
+        weekday: "short",
         day: "numeric",
       });
-    },
-    roundNumber(value) {
-      return Math.round(value);
-    },
-    speedConverter(speed) {
-      return (speed * 1.61).toFixed(1);
     },
   },
 };
@@ -70,14 +68,14 @@ export default {
 }
 
 .card-container {
-  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-background-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 20px;
 }
 
 .date-wrapper span {
@@ -89,8 +87,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px;
   font-size: 18px;
+  margin: 10px;
 }
 
 .weather-forecast-wrapper img {
@@ -111,8 +109,8 @@ export default {
 }
 
 .weather-conditions-wrapper .min-max-temperature span {
-  margin: 5px;
   font-size: 18px;
+  margin: 5px;
 }
 
 .weather-conditions-wrapper .min-max-temperature hr {
@@ -138,12 +136,6 @@ export default {
 */
 
 /*
-* Large size screens
-*/
-@media screen and (max-width: 1024px) {
-}
-
-/*
 * Tablet sizes
  */
 @media screen and (max-width: 768px) {
@@ -152,7 +144,7 @@ export default {
   }
 }
 
-/* 
+/*
 * Mobile phone sizes
 */
 @media screen and (max-width: 414px) {
@@ -162,14 +154,25 @@ export default {
 
   .card-container {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 25px;
     border-radius: 0;
+  }
+
+  .date-wrapper {
+    width: 30%;
+  }
+
+  .weather-forecast-wrapper {
+    width: 40%;
+  }
+
+  .weather-conditions-wrapper {
+    width: 30%;
   }
 
   .weather-conditions-wrapper {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 </style>

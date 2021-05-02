@@ -1,0 +1,36 @@
+/*
+* General app styles go here!
+*/
+
+:root {
+  --card-background-color: rgba(255, 255, 255, 0.15);
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  --text-color: #fff;
+  --default-margin: 20px;
+
+  --app-default-bg-color: linear-gradient(to top, #92b9d6, #adb0b3);
+  --app-snow-bg-color: linear-gradient(to top, #92b9d6, #adb0b3);
+  --app-sleet-bg-color: linear-gradient(to top, #587387, #a9adb0);
+  --app-hail-bg-color: linear-gradient(to top, #587387, #a9adb0);
+  --app-thunderstorms-bg-color: linear-gradient(to top, #1c0940, #1d3c63);
+  --app-heavy-rain-bg-color: linear-gradient(to top, #274159, #4a6583);
+  --app-light-rain-bg-color: linear-gradient(to top, #43688a, #788b9e);
+  --app-showers-bg-color: linear-gradient(to top, #728db0, #a8c1e0);
+  --app-heavy-cloud-bg-color: linear-gradient(to top, #525252, #7a7a7a);
+  --app-light-cloud-bg-color: linear-gradient(to top, #2a6fa8, #6ebdff);
+  --app-clear-bg-color: linear-gradient(to top, #ff9853, #ffbb39);
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: var(--text-color);
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}

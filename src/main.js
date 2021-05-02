@@ -7,6 +7,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCompass, faWind, faTint } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
+import "./css/app.css";
+
 library.add(faCompass, faWind, faTint);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

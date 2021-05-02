@@ -15,39 +15,13 @@ export default {
   },
 
   computed: {
-    backgroundColorHandler: () => {
-      switch (this.weatherData.weather.weatherStateAbbr) {
-        case "s": {
-          return {
-            backgroundColor: "blue",
-          };
-        }
-        default: {
-          return {
-            backgroundColor: "blue",
-          };
-        }
-      }
-    },
+    /*
+     * bgColor is used to map the appBackground value and
+     * set the correct style to the app's background.
+     */
     ...mapState({
       bgColor: (state) => state.utils.appBackground,
     }),
   },
 };
 </script>
-
-<style>
-#app {
-  min-height: 100vh;
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #fff;
-  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-body {
-  margin: 0;
-}
-</style>

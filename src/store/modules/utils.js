@@ -2,8 +2,7 @@
 const state = () => ({
   loading: false,
   appBackground: {
-    transition: "0.5s",
-    backgroundImage: "linear-gradient(to top, #92b9d6, #adb0b3)",
+    backgroundImage: "var(--app-default-bg-color)",
   },
 });
 
@@ -22,44 +21,57 @@ const mutations = {
 
 // actions
 const actions = {
+  /*
+   * Handles loading spinner state.
+   * state: Boolean
+   * true enables the spinner
+   * false disables the spinner
+   */
   toggleLoading({ commit }, state) {
     commit("setLoading", state);
   },
+  /*
+   * Handles app's background color based on current weather state.
+   * arg: String with weather state abbreviation
+   * if no valid state is passed, the default colors are applied
+   */
   changeAppBackground({ commit }, arg) {
     let color;
     switch (arg) {
       case "sn":
-        color = "linear-gradient(to top, #92b9d6, #adb0b3)";
+        color = "var(--app-snow-bg-color)";
         break;
       case "sl":
-        color = "linear-gradient(to top, #587387 , #a9adb0)";
+        color = "var(--app-sleet-bg-color)";
         break;
       case "h":
-        color = "linear-gradient(to top, #587387 , #a9adb0)";
+        color = "var(--app-hail-bg-color)";
         break;
       case "t":
-        color = "linear-gradient(to top, #1c0940 , #1d3c63)";
+        color = "var(--app-thunderstorms-bg-color)";
         break;
       case "hr":
-        color = "linear-gradient(to top, #274159 , #4a6583)";
+        color = "var(--app-heavy-rain-bg-color)";
         break;
       case "lr":
-        color = "linear-gradient(to top, #43688a , #788b9e)";
+        color = "var(--app-light-rain-bg-color)";
         break;
       case "s":
-        color = "linear-gradient(to top, #728db0 , #a8c1e0)";
+        color = "var(--app-showers-bg-color)";
         break;
       case "hc":
-        color = "linear-gradient(to top, #525252 , #7a7a7a)";
+        color = "var(--app-heavy-cloud-bg-color)";
         break;
       case "lc":
-        color = "linear-gradient(to top, #2a6fa8 , #6ebdff)";
+        color = "var(--app-light-cloud-bg-color)";
         break;
       case "c":
-        color = "linear-gradient(to top, #ff9853 , #ffbb39)";
+        color = "var(--app-clear-bg-color)";
         break;
+      default:
+        color = "var(--app-default-bg-color)";
     }
-    commit("setAppBackground", { transition: "0.5s", backgroundImage: color });
+    commit("setAppBackground", { backgroundImage: color });
   },
 };
 

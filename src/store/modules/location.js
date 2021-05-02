@@ -2,7 +2,7 @@ import metaWeatherApi from "../../api/meta-weather-api";
 
 // initial state
 const state = () => ({
-  defaultWoeid: 742676,
+  defaultWoeid: 742676, // Lisbon
   location: "",
   locationSearchResults: null,
 });
@@ -19,6 +19,9 @@ const mutations = {
 
 // actions
 const actions = {
+  /*
+   * Fetches locations based on a word query.
+   */
   async searchLocation({ commit }, query) {
     try {
       const data = await metaWeatherApi.fetchLocations(query);
@@ -28,6 +31,9 @@ const actions = {
       console.log(error);
     }
   },
+  /*
+   * Clears locationSearchResults state
+   */
   clearLocationSearchResults({ commit }) {
     commit("setLocationSearchResults", null);
   },

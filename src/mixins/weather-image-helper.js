@@ -1,5 +1,8 @@
 export const weatherImageHelper = {
   methods: {
+    /*
+     * Returns correct asset based on the weather abbreviation string.
+     */
     getWeatherImage(weatherState) {
       switch (weatherState) {
         case "sn":
@@ -23,6 +26,20 @@ export const weatherImageHelper = {
         case "c":
           return require("@/assets/weather-icons/clear.png");
       }
+    },
+  },
+  filters: {
+    /*
+     * Rounds a value to the nearest whole number.
+     */
+    roundNumber(value) {
+      return Math.round(value);
+    },
+    /*
+     * Converts a value from mph to kmh.
+     */
+    speedConverter(speed) {
+      return (speed * 1.61).toFixed(1);
     },
   },
 };

@@ -23,11 +23,14 @@ const mutations = {
 
 // actions
 const actions = {
+  /*
+   * Fetches weather from API, handles response data and sets app state.
+   */
   async searchLocationWeather({ commit, dispatch }, woeid) {
     try {
       dispatch("utils/toggleLoading", true, { root: true });
       const data = await metaWeatherApi.fetchLocationWeather(woeid);
-      console.log(`Weather data fetched: ${data}`);
+      console.log(`Weather data fetched: ${JSON.stringify(data)}`);
       const weather = data.consolidated_weather.map((entry) => {
         return {
           id: entry.id,
@@ -56,7 +59,6 @@ const actions = {
       );
       dispatch("utils/toggleLoading", false, { root: true });
     } catch (error) {
-      console.log("oops");
       console.log(error);
       dispatch("utils/toggleLoading", false, { root: true });
     }

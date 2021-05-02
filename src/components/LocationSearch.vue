@@ -3,7 +3,7 @@
     id="location-search-form"
     class="container"
     @input="debounceSearch"
-    @submit.prevent="onSearch"
+    autocomplete="off"
   >
     <div class="autocomplete">
       <input
@@ -21,7 +21,7 @@
           v-if="locationSearchResults && !locationSearchResults.length"
           class="autocomplete-item"
         >
-          No results found...
+          {{ noResults }}
         </li>
         <li
           v-for="location in locationSearchResults"
@@ -45,6 +45,7 @@ export default {
     return {
       searchText: "",
       debounce: null,
+      noResults: "No results found...",
     };
   },
   methods: {
@@ -57,6 +58,10 @@ export default {
       this.searchLocationWeather(location.woeid);
     },
 
+    /*
+     * Handles input event.
+     * Clears location search results when search box has no text.
+     */
     inputHandler() {
       if (!this.searchText.length) {
         this.clearLocationSearchResults();
@@ -99,12 +104,11 @@ export default {
 
 <style scoped>
 .container {
-  margin: 20px;
+  margin: var(--default-margin);
 }
 
 .autocomplete {
   position: relative;
-  z-index: 999;
 }
 
 .autocomplete .search-input {
@@ -114,7 +118,7 @@ export default {
   border: none;
   outline: none;
   background: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.5);
   transition: 0.4s;
@@ -135,7 +139,6 @@ export default {
   max-height: 300px;
   overflow: auto;
   background-color: rgba(255, 255, 255, 0.95);
-
   color: #000;
   width: 300px;
 }
@@ -150,6 +153,5 @@ export default {
 
 .autocomplete-item:hover {
   background-color: rgb(192, 192, 192);
-  color: white;
 }
 </style>
