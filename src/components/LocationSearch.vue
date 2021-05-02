@@ -7,12 +7,12 @@
   >
     <div class="autocomplete">
       <input
+        class="search-input"
         type="text"
         v-model="searchText"
-        placeholder="Tokyo..."
+        placeholder="Search a city..."
         @input="inputHandler"
       />
-      <!-- <input type="submit" :disabled="!location" /> -->
       <ul
         class="autocomplete-items"
         v-show="searchText && locationSearchResults"
@@ -58,7 +58,9 @@ export default {
     },
 
     inputHandler() {
-      if (!this.searchText.length) this.clearLocationSearchResults();
+      if (!this.searchText.length) {
+        this.clearLocationSearchResults();
+      }
     },
 
     /*
@@ -89,6 +91,7 @@ export default {
   computed: {
     ...mapState({
       locationSearchResults: (state) => state.location.locationSearchResults,
+      isLoading: (state) => state.utils.loading,
     }),
   },
 };
@@ -96,30 +99,57 @@ export default {
 
 <style scoped>
 .container {
-  margin: 35px;
+  margin: 20px;
 }
 
 .autocomplete {
   position: relative;
+  z-index: 999;
+}
+
+.autocomplete .search-input {
+  width: 300px;
+  height: 32px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: 0.4s;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.autocomplete .search-input:focus {
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .autocomplete-items {
+  position: absolute;
+  z-index: 10;
   padding: 10px;
   margin: 0;
   border: 1px solid #eeeeee;
   max-height: 300px;
   overflow: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+
+  color: #000;
+  width: 300px;
 }
 
 .autocomplete-item {
   list-style: none;
   text-align: left;
-  padding: 4px 2px;
+  padding: 6px 2px;
   cursor: pointer;
+  text-shadow: none;
 }
 
 .autocomplete-item:hover {
-  background-color: #4aae9b;
+  background-color: rgb(192, 192, 192);
   color: white;
 }
 </style>

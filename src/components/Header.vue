@@ -16,7 +16,8 @@ export default {
 
 <style scoped>
 .header {
-  background-color: blue;
+  background-color: rgba(255, 255, 255, 0.25);
+
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -34,6 +35,25 @@ export default {
 }
 
 a {
-  color: lightblue;
+  color: rgb(92, 92, 92);
+  text-shadow: none;
+}
+
+/* 
+* Mobile phone sizes
+*/
+@media screen and (max-width: 414px) {
+  .header {
+    padding: 15px;
+  }
+  .title {
+    font-size: 25px;
+    color: #fff;
+  }
+
+  p {
+    padding: 10px;
+    margin: 0;
+  }
 }
 </style>
