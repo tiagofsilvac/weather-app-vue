@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/*
+ * Meta Weather API does not support cors, so every call goes though a proxy server
+ * using a private heroku server with an instance of cors-anywhere project by Rob--W.
+ */
 const proxyServerUrl = "https://cors-anywhere-tfsc.herokuapp.com/";
 const metaWeatherBaseUrl = "https://www.metaweather.com";
 

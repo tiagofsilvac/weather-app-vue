@@ -8,16 +8,16 @@
   --text-color: #fff;
   --default-margin: 20px;
 
-  --app-default-bg-color: linear-gradient(to top, #92b9d6, #adb0b3);
+  --app-default-bg-color: linear-gradient(to bottom, #406161, #87a79b);
   --app-snow-bg-color: linear-gradient(to top, #92b9d6, #adb0b3);
   --app-sleet-bg-color: linear-gradient(to top, #587387, #a9adb0);
-  --app-hail-bg-color: linear-gradient(to top, #587387, #a9adb0);
-  --app-thunderstorms-bg-color: linear-gradient(to top, #1c0940, #1d3c63);
-  --app-heavy-rain-bg-color: linear-gradient(to top, #274159, #4a6583);
-  --app-light-rain-bg-color: linear-gradient(to top, #43688a, #788b9e);
-  --app-showers-bg-color: linear-gradient(to top, #728db0, #a8c1e0);
-  --app-heavy-cloud-bg-color: linear-gradient(to top, #525252, #7a7a7a);
-  --app-light-cloud-bg-color: linear-gradient(to top, #2a6fa8, #6ebdff);
+  --app-hail-bg-color: linear-gradient(to top, #a9adb0, #587387);
+  --app-thunderstorms-bg-color: linear-gradient(to top, #4b6cb7, #182848);
+  --app-heavy-rain-bg-color: linear-gradient(to top, #6f7b80, #1f2538);
+  --app-light-rain-bg-color: linear-gradient(to top, #b9aeae, #35555e);
+  --app-showers-bg-color: linear-gradient(to top, #a8c1e0, #728db0);
+  --app-heavy-cloud-bg-color: linear-gradient(to top, #979797, #5d676d);
+  --app-light-cloud-bg-color: linear-gradient(to top, #6bb9fa, #347296);
   --app-clear-bg-color: linear-gradient(to top, #ff9853, #ffbb39);
 }
 

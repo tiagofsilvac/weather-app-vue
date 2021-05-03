@@ -9,7 +9,10 @@
       </div>
       <div class="weather-wrapper">
         <div class="state">
-          <img :src="getWeatherImage(weather.weatherStateAbbr)" />
+          <img
+            class="weather-image"
+            :src="getWeatherImage(weather.weatherStateAbbr)"
+          />
           <span>{{ weather.weatherStateName }}</span>
         </div>
         <div class="temperature">

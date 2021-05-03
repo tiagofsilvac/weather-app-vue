@@ -71,8 +71,10 @@ export default {
     /*
      * Implements a debounce search for delaying the API request while the user is typing.
      * This allows the request to be made only after the user stops typing for a specific time.
+     * Using input event value instead of pure v-model for compatibility with virtual keyboard in mobile devices
      */
-    debounceSearch() {
+    debounceSearch($e) {
+      this.searchText = $e.target.value;
       clearTimeout(this.debounce);
       this.debounce = setTimeout(() => {
         if (this.validateSearchText(this.searchText)) {

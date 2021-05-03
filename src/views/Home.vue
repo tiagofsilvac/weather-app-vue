@@ -4,7 +4,11 @@
     <div v-if="isLoading" class="loading">
       <beat-loader color="#fff"></beat-loader>
     </div>
-    <div v-else-if="!isLoading && !weatherData">error :(</div>
+    <div v-else-if="!isLoading && !weatherData">
+      <error-message
+        message="There was a problem fetching the data, please try again later!"
+      ></error-message>
+    </div>
     <div v-else>
       <WeatherCard
         :weather="weatherData.currentWeather"
@@ -27,6 +31,7 @@ import BeatLoader from "vue-spinner/src/BeatLoader.vue";
 import LocationSearch from "../components/LocationSearch";
 import WeatherCard from "../components/WeatherCard";
 import ForecastCard from "../components/ForecastCard";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default {
   name: "Home",
@@ -35,6 +40,7 @@ export default {
     LocationSearch,
     WeatherCard,
     ForecastCard,
+    ErrorMessage,
   },
   methods: {
     /*

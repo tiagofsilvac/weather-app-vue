@@ -6,7 +6,10 @@
       </div>
       <div class="weather-forecast-wrapper">
         <div class="state">
-          <img :src="getWeatherImage(forecast.weatherStateAbbr)" />
+          <img
+            class="weather-image"
+            :src="getWeatherImage(forecast.weatherStateAbbr)"
+          />
           <span>{{ forecast.weatherStateName }}</span>
         </div>
       </div>

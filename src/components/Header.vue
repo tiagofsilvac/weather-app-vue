@@ -36,7 +36,7 @@ export default {
 }
 
 a {
-  color: rgb(92, 92, 92);
+  color: rgb(247, 247, 247);
   text-shadow: none;
 }
 
